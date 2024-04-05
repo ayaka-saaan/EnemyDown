@@ -21,7 +21,7 @@ public class EnemySpawnCommand extends BaseCommand implements Listener {
     return false;
   }
 
-  private Location getEnemySpawnLocation(Player player) {
+  public static Location getEnemySpawnLocation(Player player) {
     Location playerLocation = player.getLocation();
     int randomX = new SplittableRandom().nextInt(20) - 10;
     int randomZ = new SplittableRandom().nextInt(20) - 10;
@@ -33,7 +33,7 @@ public class EnemySpawnCommand extends BaseCommand implements Listener {
     return new Location(player.getWorld(), x, y, z);
   }
 
-  private EntityType getEnemy() {
+  public static EntityType getEnemy() {
     List<EntityType> enemyList = List.of(EntityType.ZOMBIE, EntityType.SKELETON, EntityType.WITCH);
     return enemyList.get(new SplittableRandom().nextInt(enemyList.size()));
   }
