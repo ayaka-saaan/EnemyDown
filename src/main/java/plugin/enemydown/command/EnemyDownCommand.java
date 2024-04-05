@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import plugin.enemydown.Main;
 import plugin.enemydown.data.PlayerScore;
+import plugin.enemydown.command.EnemySpawnCommand;
 
 public class EnemyDownCommand extends BaseCommand implements Listener {
 
@@ -28,6 +29,7 @@ public class EnemyDownCommand extends BaseCommand implements Listener {
     this.main = main;
   }
 
+  /**
   @Override
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
     if (sender instanceof Player player){
@@ -36,6 +38,7 @@ public class EnemyDownCommand extends BaseCommand implements Listener {
       return onExecuteNPCCommand(sender);
     }
   }
+   */
 
   @Override
   public boolean onExecutePlayerCommand(Player player) {
@@ -62,13 +65,13 @@ public class EnemyDownCommand extends BaseCommand implements Listener {
           }
         return;
       }
-      world.spawnEntity(getEnemySpawnLocation(player, world), getEnemy());
+
+      world.spawnEntity(EnemySpawnCommand.getEnemySpawnLocation(player), EnemySpawnCommand.getEnemy());
       nowPlayer.setGameTime(nowPlayer.getGameTime() - 5);
       }, 0, 5 * 20);
 
     return true;
   }
-
 
   @Override
   public boolean onExecuteNPCCommand(CommandSender sender) {
